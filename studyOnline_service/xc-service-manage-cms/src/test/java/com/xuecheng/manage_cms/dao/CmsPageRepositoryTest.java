@@ -5,9 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -25,9 +23,25 @@ public class CmsPageRepositoryTest {
     @Autowired
     CmsPageRepository cmsPageRepository;
 
+    //站点id,模板id,精确匹配,页面别名,模糊匹配
+
     @Test
     public void testFindAll(){
-        List<CmsPage> all = cmsPageRepository.findAll();
+        //页面别名条件匹配
+        ExampleMatcher exampleMatching = ExampleMatcher.matching();
+        ExampleMatcher pageAliase = exampleMatching.withMatcher("pageAliase", ExampleMatcher.GenericPropertyMatchers.contains());
+
+
+        //站点id,模板id精确匹配
+        CmsPage cmsPage = new CmsPage();
+        cmsPage.setPageAliase("轮播");
+        cmsPage.setSiteId("5a751fab6abb5044e0d19ea1");
+        cmsPage.setTemplateId("5a962bf8b00ffc514038fafa");
+
+        Example<CmsPage> example = Example.of(cmsPage, pageAliase);
+
+        Pageable pageable =  new PageRequest(0, 10);
+        Page<CmsPage> all = cmsPageRepository.findAll(example, pageable);
         System.out.println(all);
 
     }
@@ -66,4 +80,6 @@ public class CmsPageRepositoryTest {
         CmsPage cmsPage = cmsPageRepository.findByPageName("测试页面");
         System.out.println(cmsPage);
     }
+
+
 }
