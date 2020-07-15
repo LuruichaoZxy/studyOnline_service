@@ -4,6 +4,9 @@ import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import org.springframework.amqp.rabbit.support.CorrelationData;
+
+import java.util.UUID;
 
 public class producer03_routering {
     //队列名称

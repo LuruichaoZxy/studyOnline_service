@@ -6,6 +6,7 @@
     <modules>
         <module>../test_rabbitMq_producer</module>
         <module>../test_rabbitMq_consumer</module>
+        <module>../xc-govern-center</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -10,23 +10,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>test_rabbitMq_producer</artifactId>
+    <artifactId>xc-govern-center</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.rabbitmq</groupId>
-            <artifactId>amqp-client</artifactId>
-            <version>4.0.3</version>
+            <groupId>org.springframework.cloud</groupId>
+           <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.amqp</groupId>
-            <artifactId>spring-rabbit</artifactId>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
+
+
 
 </project>
